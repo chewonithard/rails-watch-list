@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="banner-container">
+  <%= render "components/banner" %>
+  </div>
+
+  <div class="cards-container">
+  <% @lists.each do |list| %>
+    <%= render "components/card", list_name: list.name, list_path: list_path(list) %>
+  <% end %>
+  </div>
+
+  <div class="new-list-container">
+  <h3>Add a new list</h3>
+  <%= render "form", list: @list %>
+  </div>
+</div>

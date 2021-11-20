@@ -1,0 +1,17 @@
+<h1>Show page</h1>
+
+<h2><%= "List Name: #{@list.name}" %></h2>
+
+<h2><% @list.bookmarks.each do |bookmark| %></h2>
+<li><img src =<%= "#{bookmark.movie.poster_url}" %> width="300" height="400"> <%= link_to "delete bookmark", bookmark_path(bookmark.id), method: :delete, data: { confirm: "Are you sure?" } %></li>
+<% end %>
+
+<h2>Add new bookmark</h2>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.association :movie %>
+  <%= f.input :comment %>
+  <%= f.submit ("Add bookmark to list") %>
+<% end %>
+
+<%= link_to "home", lists_path %>
