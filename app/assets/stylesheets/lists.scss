@@ -1,16 +1,26 @@
 // Place all the styles related to the lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.cards-container {
-  padding-top: 40px;
-  padding-bottom: 40px;
+
+// .cards-container {
+//   padding-top: 40px;
+//   padding-bottom: 40px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-around;
+//   row-gap: 10px;
+//   column-gap: 30px;
+// }
+
+.card-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  row-gap: 10px;
-  column-gap: 30px;
+  padding: 40px;
 }
 
-.new-list-container {
-
+.cards {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 24px;
 }
