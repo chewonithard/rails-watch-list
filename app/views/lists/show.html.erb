@@ -10,18 +10,20 @@
         <div class="movie-card">
           <img src=<%= "https://image.tmdb.org/t/p/w500#{bookmark.movie.poster_url}" %> width="300" height="100"/>
           <div class="movie-card-info">
-            <div>
+            <div class="title-rating">
               <h2><%= bookmark.movie.title %></h2>
-              <p><%= bookmark.movie.rating %></p>
-              <p><%= bookmark.movie.overview %></p>
+              <p><%= bookmark.movie.rating %><i class="material-icons mr-1 inline-icon">star_outline</i></p>
+            </div>
+            <div>
+              <p class="overview"><%= bookmark.movie.overview %></p>
             </div>
           </div>
           <div class="movie-card-footer">
             <div class="movie-card-comment">
-              <p><%= bookmark.comment %></p>
+              <p><i class="material-icons mr-1">format_quote</i><%= bookmark.comment %></p>
             </div>
             <div class="movie-card-delete">
-              <%= link_to "delete bookmark", bookmark_path(bookmark.id), method: :delete, data: { confirm: "Are you sure?" } %>
+              <%= link_to "Delete", bookmark_path(bookmark.id), class: "btn btn-ghost", method: :delete, data: { confirm: "Are you sure?" } %>
             </div>
           </div>
         </div>
