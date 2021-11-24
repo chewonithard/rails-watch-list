@@ -14,3 +14,49 @@
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
   text-decoration: none;
 }
+
+.card h4:hover {
+  text-decoration: none;
+}
+
+// show page css
+
+.movie-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.movie-card > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.movie-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.movie-card p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.movie-card .movie-card-info {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.movie-card-info .movie-card-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}

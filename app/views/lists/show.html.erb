@@ -1,19 +1,41 @@
-<h1>Show page</h1>
+<div class="container">
 
-<h2><%= "List Name: #{@list.name}" %></h2>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @list.photo.key, height: 600, crop: :fill %>')">
+    <h1><%= @list.name %></h1>
+  </div>
 
-<h2><% @list.bookmarks.each do |bookmark| %></h2>
-<li><img src =<%= "#{bookmark.movie.poster_url}" %> width="300" height="400"> <%= link_to "delete bookmark", bookmark_path(bookmark.id), method: :delete, data: { confirm: "Are you sure?" } %></li>
-<% end %>
+  <div class="movie-cards-container">
+    <div class="movie-cards">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="movie-card">
+          <img src=<%= "https://image.tmdb.org/t/p/w500#{bookmark.movie.poster_url}" %> width="300" height="100"/>
+          <div class="movie-card-info">
+            <div>
+              <h2><%= bookmark.movie.title %></h2>
+              <p><%= bookmark.movie.rating %></p>
+              <p><%= bookmark.movie.overview %></p>
+            </div>
+          </div>
+          <div class="movie-card-footer">
+            <div class="movie-card-comment">
+              <p><%= bookmark.comment %></p>
+            </div>
+            <div class="movie-card-delete">
+              <%= link_to "delete bookmark", bookmark_path(bookmark.id), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<h2>Add new bookmark</h2>
+    <div class="new_bookmark">
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+          <%= f.association :movie %>
+          <%= f.input :comment %>
+          <%= f.submit ("Add bookmark to list") %>
+        <% end %>
+    </div>
 
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.association :movie %>
-  <%= f.input :comment %>
-  <%= f.submit ("Add bookmark to list") %>
-<% end %>
-
-<%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
-
-<%= link_to "home", lists_path %>
+    <%= link_to "home", lists_path %>
+</div>
